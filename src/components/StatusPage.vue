@@ -9,30 +9,33 @@
 <script>
 export default {
   name: 'StatusPage',
-  data: function () {
-    const token = localStorage.getItem("token");
-    const config = {
-        headers: {"Authorization": `Bearer ${token}`}
-    }
-    return {
-      config
-    }
-  },
   methods: {
     checkin: function () {
-        const baseURI = 'https://checkin-server.herokuapp.com/statuses';
-        this.$http.post(baseURI, {type: 'checkin'}, this.config)
-        .then(() => {
-          alert("You have checked in");
-          this.$router.go();
-        })
+      const token = localStorage.getItem("token");
+      const config = {
+          headers: {"Authorization": `Bearer ${token}`}
+      }
+      const baseURI = 'https://checkin-server.herokuapp.com/statuses';
+      this.$http.post(baseURI, {type: 'USER_CHECKED_IN'}, config)
+      .then(() => {
+        alert("You have checked in");
+      })
+      .catch(err => {
+        alert(err.response.data);
+      })
     },
     checkout: function () {
+      const token = localStorage.getItem("token");
+      const config = {
+          headers: {"Authorization": `Bearer ${token}`}
+      }
       const baseURI = 'https://checkin-server.herokuapp.com/statuses';
-      this.$http.post(baseURI, {type: 'checkout'}, this.config)
+      this.$http.post(baseURI, {type: 'USER_CHECKED_OUT'}, config)
       .then(() => {
         alert("You have checked out");
-        this.$router.go();
+      })
+      .catch(err => {
+        alert(err.response.data);
       })
     }
   }
