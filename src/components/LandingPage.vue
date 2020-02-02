@@ -1,6 +1,6 @@
 <template>
   <div id="landingpage">
-    <h1>{{ msg }}</h1>
+    <h1>Welcome</h1>
     <NavigationButton path="/login" buttonText="Log In"/>
     <NavigationButton path="/register" buttonText="Register" />
   </div>
@@ -10,9 +10,6 @@
 import NavigationButton from './NavigationButton'
 export default {
   name: 'LandingPage',
-  props: {
-    msg: String
-  },
   components: {
     NavigationButton
   }
@@ -26,5 +23,11 @@ export default {
   background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100vh;
+}
+h1 {
+  color: white;
+  font-size: 50pt;
+  margin-top: 20%;
+  text-align: center;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div id="nav-container">
-        <router-link id='navlink' :to="{path: '/register'}"><h1>{{buttonText}}</h1></router-link>
+        <router-link id='navlink' :to="{path: path}"><h1>{{buttonText}}</h1></router-link>
     </div>
 </template>
 
