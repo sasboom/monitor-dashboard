@@ -76,13 +76,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#submit {
-  display: block;
-  padding-top: 5vh;
-}
-#submitBtn {
-  text-align: center;
-}
 h1 {
   font-family: 'BioRhyme', serif;
   padding-top: 2vh;

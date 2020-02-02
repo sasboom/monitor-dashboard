@@ -1,15 +1,86 @@
 <template>
   <div id="registerpage">
     <h1>Register</h1>
-    <div>
-        <h1>Username</h1>
-        <input type="text" v-model="username" />
-        <h1>Password</h1>
-        <input type="password" v-model="password" />
-
-        <div id="submit">
-          <input id="submitBtn" type="submit" value="Submit" v-on:click="submit" />
-        </div>
+    <div id="registerform">
+      <b-form @submit="submit">
+        <b-row>
+          <b-col>
+            <b-form-group
+              id="input-group-1"
+              label="First Name"
+              label-for="firstname"
+              description=""
+            >
+              <b-form-input
+                id="firstname"
+                v-model="firstname"
+                type="text"
+                required
+                placeholder="Please enter your first name"
+              >
+              </b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-form-group
+              id="input-group-2"
+              label="Last Name"
+              label-for="lastname"
+              description=""
+            >
+              <b-form-input
+                id="lastname"
+                v-model="lastname"
+                type="text"
+                required
+                placeholder="Please enter your last name"
+              >
+              </b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-form-group
+              id="input-group-3"
+              label="Username"
+              label-for="username"
+              description=""
+            >
+              <b-form-input
+                id="username"
+                v-model="username"
+                type="text"
+                required
+                placeholder="Please enter a username"
+              >
+              </b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-form-group
+              id="input-group-4"
+              label="Password"
+              label-for="password"
+              description=""
+            >
+              <b-form-input
+                id="password"
+                v-model="password"
+                type="password"
+                required
+                placeholder="Please enter a password"
+              >
+              </b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-button type="submit" variant="dark">Submit</b-button>
+      </b-form>
     </div>
   </div>
 </template>
@@ -20,13 +91,16 @@ export default {
   data: function () {
     return {
         username: '',
-        password: ''
+        password: '',
+        firstname: '',
+        lastname: ''
     }
   },
   methods: {
-      submit: function () {
+      submit: function (e) {
+        e.preventDefault();
         const baseURI = 'https://checkin-server.herokuapp.com/register';
-        this.$http.post(baseURI, {username: this.username, password: this.password})
+        this.$http.post(baseURI, {username: this.username, password: this.password, firstname: this.firstname, lastname: this.lastname})
         .then(() => {
           localStorage.clear();
           this.$router.push({ path: '/login' });
@@ -50,11 +124,11 @@ export default {
 }
 h1 {
   padding-top: 2vh;
+  font-family: 'BioRhyme', serif;
 }
-#landingpage {
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh;
+#registerform {
+  margin-top: 10vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 </style>
