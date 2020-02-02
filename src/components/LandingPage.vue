@@ -1,9 +1,21 @@
 <template>
-  <div id="landingpage">
-    <h1>Welcome</h1>
-    <NavigationButton path="/login" buttonText="Log In"/>
-    <NavigationButton path="/register" buttonText="Register" />
-  </div>
+  <b-jumbotron bg-variant="light" text-variant="dark" id="jumbo">
+      <template v-slot:header><h1>Check-In/Out System</h1></template>
+      <hr class="my-4" id="line">
+      <p>
+        To begin please login or register an account.
+      </p>
+      <b-row class="top-buffer">
+        <b-col>
+          <NavigationButton path="/login" buttonText="Log In"/>
+        </b-col>
+      </b-row>
+      <b-row class="top-buffer">
+        <b-col>
+          <NavigationButton path="/register" buttonText="Register" />
+        </b-col>
+      </b-row>
+    </b-jumbotron>
 </template>
 
 <script>
@@ -18,16 +30,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#landingpage {
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#jumbo{
   height: 100vh;
 }
+#line {
+  background-color: black;
+}
+.top-buffer {
+  margin-top: 10vh;
+}
 h1 {
-  color: white;
+  color: black;
   font-size: 50pt;
-  margin-top: 20%;
   text-align: center;
+  font-family: 'Italianno', cursive;
+}
+p {
+  margin-top: 10vh;
+  font-family: 'BioRhyme', serif;
 }
 </style>
