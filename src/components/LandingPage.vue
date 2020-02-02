@@ -43,7 +43,7 @@ h1 {
   color: black;
   font-size: 50pt;
   text-align: center;
-  font-family: 'Italianno', cursive;
+  font-family: 'BioRhyme', serif;
 }
 p {
   margin-top: 10vh;
