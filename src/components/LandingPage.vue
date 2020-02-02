@@ -1,6 +1,9 @@
 <template>
   <b-jumbotron bg-variant="light" text-variant="dark" id="jumbo">
-      <template v-slot:header><h1>Check-In/Out System</h1></template>
+      <template v-slot:header><h1>Are You Here Yet?</h1></template>
+      <template v-slot:lead>
+        Time to check in!
+      </template>
       <hr class="my-4" id="line">
       <p>
         To begin please login or register an account.
