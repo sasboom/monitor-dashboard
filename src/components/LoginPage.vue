@@ -1,6 +1,6 @@
 <template>
-  <div id="registerpage">
-    <h1>Register</h1>
+  <div id="loginpage">
+    <h1>Login</h1>
     <div>
         <h1>Username</h1>
         <input type="text" v-model="username" />
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'RegisterPage',
+  name: 'LoginPage',
   data: function () {
     return {
         username: '',
@@ -25,12 +25,19 @@ export default {
   },
   methods: {
       submit: function () {
-        const baseURI = 'https://checkin-server.herokuapp.com/register';
+        const baseURI = 'https://checkin-server.herokuapp.com/login';
         this.$http.post(baseURI, {username: this.username, password: this.password})
-        .then(() => {
+        .then(response => {
+          localStorage.setItem('token', response.data.token);
           this.$router.push({ path: '/status' });
         })
       }
+  },
+  mounted: function () {
+    const tokenExists = localStorage.getItem('token');
+    if (tokenExists) {
+      localStorage.removeItem('token');
+    }
   }
 }
 </script>
