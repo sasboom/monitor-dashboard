@@ -5,6 +5,7 @@ import App from './App.vue'
 import RegisterPage from './components/RegisterPage.vue'
 import LoginPage from './components/LoginPage.vue'
 import StatusPage from './components/StatusPage.vue'
+import HistoryPage from './components/HistoryPage.vue'
 import axios from 'axios'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -23,7 +24,8 @@ const routes = [
   {path: '/', component: LandingPage},
   {path: '/register', name: "Register", component: RegisterPage},
   {path: '/login', name: "Login", component: LoginPage},
-  {path: '/status', name: "Status", component: StatusPage, meta: {requiresAuth: true}}
+  {path: '/status', name: "Status", component: StatusPage, meta: {requiresAuth: true}},
+  {path: '/history', name: "History", component: HistoryPage, meta: {requiresAuth: true}}
 ]
 
 const router = new VueRouter({
