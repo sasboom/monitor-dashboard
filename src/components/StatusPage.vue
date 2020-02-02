@@ -1,5 +1,6 @@
 <template>
   <div id="statuspage">
+    <Navbar />
     <b-row class="top-buffer">
       <b-col>
       <h1>Status Page</h1>
@@ -51,12 +52,23 @@
         </b-modal>
       </b-col>
     </b-row>
+    <b-row class="top-buffer">
+      <b-col>
+        <NavigationButton path="/history" buttonText="Status History" />
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
+import NavigationButton from './NavigationButton'
+import Navbar from './Navbar'
 export default {
   name: 'StatusPage',
+  components: {
+    NavigationButton,
+    Navbar
+  },
   data: function () {
     return {
       showCheckinSuccess: false,
