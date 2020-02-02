@@ -1,15 +1,50 @@
 <template>
-  <div id="loginpage">
+  <div>
     <h1>Login</h1>
-    <div>
-        <h1>Username</h1>
-        <input type="text" v-model="username" />
-        <h1>Password</h1>
-        <input type="password" v-model="password" />
-
-        <div id="submit">
-          <input id="submitBtn" type="submit" value="Submit" v-on:click="submit" />
-        </div>
+    <div id="form">
+      <b-col>
+        <b-form @submit="submit">
+          <b-row>
+            <b-col>
+              <b-form-group
+                id="input-group-1"
+                label="Username"
+                label-for="username"
+                description="This will need to be unique"
+              >
+                <b-form-input
+                  id="username"
+                  v-model="username"
+                  type="text"
+                  required
+                  placeholder="Enter username"
+                >
+                </b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <b-form-group
+                id="input-group-2"
+                label="password"
+                label-for="password"
+                description=""
+              >
+                <b-form-input
+                  id="password"
+                  v-model="password"
+                  type="password"
+                  required
+                  placeholder="Enter password"
+                >
+                </b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-button type="submit" variant="primary">Submit</b-button>
+        </b-form>
+      </b-col>
     </div>
   </div>
 </template>
@@ -24,7 +59,8 @@ export default {
     }
   },
   methods: {
-      submit: function () {
+      submit: function (e) {
+        e.preventDefault()
         const baseURI = 'https://checkin-server.herokuapp.com/login';
         this.$http.post(baseURI, {username: this.username, password: this.password})
         .then(response => {
@@ -50,12 +86,10 @@ export default {
   text-align: center;
 }
 h1 {
+  font-family: 'BioRhyme', serif;
   padding-top: 2vh;
 }
-#landingpage {
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh;
+#form {
+  margin-top: 10vh;
 }
 </style>

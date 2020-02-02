@@ -1,7 +1,5 @@
 <template>
-    <div id="nav-container">
-        <router-link id='navlink' :to="{path: path}"><h1>{{buttonText}}</h1></router-link>
-    </div>
+    <router-link id='navlink' :to="{path: path}"><b-button variant="outline-dark">{{buttonText}}</b-button></router-link>
 </template>
 
 <script>
@@ -16,20 +14,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#nav-container {
-    display: flex;
-    height: 10vh;
-    align-items: center;
-    justify-content: center;
-    vertical-align: center;
-}
 a {
-    width: 50vw;
-    height: 4vh;
-    background: grey;
-    border-radius: 99px;
+    width: 20vw;
 }
-h1 {
-    vertical-align: center;
+button {
+    font-family: 'BioRhyme', serif;
+    width: 20vw;
 }
 </style>
