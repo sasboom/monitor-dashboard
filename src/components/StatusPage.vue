@@ -9,26 +9,27 @@
 <script>
 export default {
   name: 'StatusPage',
+  data: function () {
+    const token = localStorage.getItem("token");
+    const config = {
+        headers: {"Authorization": `Bearer ${token}`}
+    }
+    return {
+      config
+    }
+  },
   methods: {
     checkin: function () {
-        const token = localStorage.getItem("token");
-        const config = {
-            headers: {"Authorization": `Bearer ${token}`}
-        }
-        const baseURI = 'https://checkin-server.herokuapp.com/status';
-        this.$http.post(baseURI, {type: 'checkin'}, config)
+        const baseURI = 'https://checkin-server.herokuapp.com/statuses';
+        this.$http.post(baseURI, {type: 'checkin'}, this.config)
         .then(() => {
           alert("You have checked in");
           this.$router.go();
         })
     },
     checkout: function () {
-      const token = localStorage.getItem("token");
-      const config = {
-          headers: {"Authorization": `Bearer ${token}`}
-      }
-      const baseURI = 'https://checkin-server.herokuapp.com/status';
-      this.$http.post(baseURI, {type: 'checkout'}, config)
+      const baseURI = 'https://checkin-server.herokuapp.com/statuses';
+      this.$http.post(baseURI, {type: 'checkout'}, this.config)
       .then(() => {
         alert("You have checked out");
         this.$router.go();
