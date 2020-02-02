@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import LandingPage from './components/LandingPage.vue'
 import App from './App.vue'
 import RegisterPage from './components/RegisterPage.vue'
+import LoginPage from './components/LoginPage.vue'
+import StatusPage from './components/StatusPage.vue'
 import axios from 'axios'
 
 Vue.config.productionTip = false
@@ -11,12 +13,27 @@ Vue.prototype.$http = axios
 
 const routes = [
   {path: '/', component: LandingPage},
-  {path: '/register', name: "Register", component: RegisterPage}
+  {path: '/register', name: "Register", component: RegisterPage},
+  {path: '/login', name: "Login", component: LoginPage},
+  {path: '/status', name: "Status", component: StatusPage, meta: {requiresAuth: true}}
 ]
 
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+      if (localStorage.getItem('token') == null) {
+        next({
+            path: '/login'
+        })
+      } else {
+        next()
+      }
+    }
+    next();
+});
 
 new Vue({
   render: h => h(App),
