@@ -28,10 +28,14 @@ export default {
         const baseURI = 'https://checkin-server.herokuapp.com/register';
         this.$http.post(baseURI, {username: this.username, password: this.password})
         .then(() => {
-          this.$router.push({ path: '/status' });
+          localStorage.clear();
+          this.$router.push({ path: '/login' });
+        })
+        .catch(() => {
+          alert("Error occurred during registration. Double check all information provided");
         })
       }
-  }
+  },
 }
 </script>
 

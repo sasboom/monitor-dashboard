@@ -28,17 +28,15 @@ export default {
         const baseURI = 'https://checkin-server.herokuapp.com/login';
         this.$http.post(baseURI, {username: this.username, password: this.password})
         .then(response => {
+          localStorage.clear();
           localStorage.setItem('token', response.data.token);
           this.$router.push({ path: '/status' });
         })
+        .catch(() => {
+          alert("Invalid user credentials");
+        })
       }
   },
-  mounted: function () {
-    const tokenExists = localStorage.getItem('token');
-    if (tokenExists) {
-      localStorage.removeItem('token');
-    }
-  }
 }
 </script>
 
