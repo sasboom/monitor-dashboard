@@ -1,21 +1,24 @@
 <template>
   <div id="statuspage">
     <Navbar />
-    <b-row class="top-buffer">
+    <b-jumbotron id="page-container" fluid>
+    <template v-slot:header>Check In / Out</template>
+
+    <template v-slot:lead>
+      Thank you for using Are You Here Yet.
+    </template>
+
+    <hr class="my-4">
+
+    <b-row>
       <b-col>
-      <h1>Status Page</h1>
+        <b-button variant="outline-success" @click=checkin>Check In</b-button>
+      </b-col>
+      <b-col>
+        <b-button variant="outline-danger" @click=checkout>Check Out</b-button>
       </b-col>
     </b-row>
-    <b-row class="top-buffer">
-      <b-col>
-        <b-button variant="outline-dark" @click=checkin>Check In</b-button>
-      </b-col>
-    </b-row>
-    <b-row class="top-buffer">
-      <b-col>
-        <b-button variant="outline-dark" @click=checkout>Check Out</b-button>
-      </b-col>
-    </b-row>
+    </b-jumbotron>
     <b-row>
       <b-col>
         <b-modal v-model="showCheckinSuccess" body-text-variant="success" title="Success" centered hide-footer>
@@ -52,21 +55,14 @@
         </b-modal>
       </b-col>
     </b-row>
-    <b-row class="top-buffer">
-      <b-col>
-        <NavigationButton path="/history" buttonText="Status History" />
-      </b-col>
-    </b-row>
   </div>
 </template>
 
 <script>
-import NavigationButton from './NavigationButton'
 import Navbar from './Navbar'
 export default {
   name: 'StatusPage',
   components: {
-    NavigationButton,
     Navbar
   },
   data: function () {
@@ -127,5 +123,13 @@ button {
 .top-buffer {
   margin-top: 10vh;
 }
-
+h1 {
+  font-family: 'BioRhyme', serif;
+}
+p {
+  font-family: 'BioRhyme', serif;
+}
+#page-container {
+  height: 80vh;
+}
 </style>
