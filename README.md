@@ -1,4 +1,4 @@
-# monitor-dashboard
+# Are You Here Yet?
 
 ## Project setup
 ```
@@ -20,5 +20,6 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Prototype
+You can find a working prototype deployed on Heroku at https://checkin-monitor.herokuapp.com/
+
