@@ -99,7 +99,7 @@ export default {
   methods: {
       submit: function (e) {
         e.preventDefault();
-        const baseURI = 'https://checkin-server.herokuapp.com/register';
+        const baseURI = 'http://localhost:3000/register';
         this.$http.post(baseURI, {username: this.username, password: this.password, firstname: this.firstname, lastname: this.lastname})
         .then(() => {
           localStorage.clear();

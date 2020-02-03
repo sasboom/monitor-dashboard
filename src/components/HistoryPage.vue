@@ -56,7 +56,7 @@ export default {
             const config = {
                 headers: {"Authorization": `Bearer ${token}`}
             }
-            const baseURI = `https://checkin-server.herokuapp.com/history`;
+            const baseURI = `http://localhost:3000/history`;
             this.$http.get(baseURI, config)
             .then(data => {
                 this.items = data.data.events.map(event => ({

@@ -82,7 +82,7 @@ export default {
       const config = {
           headers: {"Authorization": `Bearer ${token}`}
       }
-      const baseURI = 'https://checkin-server.herokuapp.com/statuses';
+      const baseURI = 'http://localhost:3000/statuses';
       this.$http.post(baseURI, {type: 'USER_CHECKED_IN'}, config)
       .then(() => {
         this.showCheckinSuccess = true;
@@ -100,7 +100,7 @@ export default {
       const config = {
           headers: {"Authorization": `Bearer ${token}`}
       }
-      const baseURI = 'https://checkin-server.herokuapp.com/statuses';
+      const baseURI = 'http://localhost:3000/statuses';
       this.$http.post(baseURI, {type: 'USER_CHECKED_OUT'}, config)
       .then(() => {
         this.showCheckoutSuccess = true;
