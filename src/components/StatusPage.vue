@@ -89,8 +89,6 @@ export default {
         this.showCheckinError = false;
       })
       .catch(err => {
-        // eslint-disable-next-line no-console
-        console.log(err);
         this.showCheckinSuccess = false;
         this.showCheckinError = true;
       })
